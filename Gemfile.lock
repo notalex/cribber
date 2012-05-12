@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/anjlab/bootstrap-rails.git
+  revision: 6ee3cb3dc6b4cc440528819c560d674f9cca06c2
+  specs:
+    anjlab-bootstrap-rails (2.0.3.2)
+      railties (>= 3.0)
+      sass
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -198,6 +206,7 @@ PLATFORMS
 
 DEPENDENCIES
   RedCloth
+  anjlab-bootstrap-rails!
   capybara
   coffee-filter
   coffee-rails

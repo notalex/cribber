@@ -14,6 +14,8 @@ gem 'haml-rails'
 gem 'coffee-filter'
 gem 'RedCloth'
 
+gem 'anjlab-bootstrap-rails', require: 'bootstrap-rails', git: 'git://github.com/anjlab/bootstrap-rails.git'
+
 group :development do
   gem 'heroku'
   gem 'taps'
