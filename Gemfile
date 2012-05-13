@@ -13,6 +13,7 @@ gem 'sass-rails'
 gem 'haml-rails'
 gem 'coffee-filter'
 gem 'RedCloth'
+gem 'twitter_oauth'
 
 gem 'anjlab-bootstrap-rails', require: 'bootstrap-rails', git: 'git://github.com/anjlab/bootstrap-rails.git'
 
