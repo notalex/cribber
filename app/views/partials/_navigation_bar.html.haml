@@ -17,4 +17,7 @@
             - if current_user.tweeter.token? and @request_token
               %li
                 = link_to 'Change Tweet account', @request_token.authorize_url
+            %li
+              = link_to content_tag(:i, '',class: 'icon-eject icon-white'), logout_path, title: :logout
+                
 
