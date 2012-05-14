@@ -1,5 +1,7 @@
 Cribber::Application.routes.draw do
 
+  root to: 'sessions#home'
+
   post '/users' => 'users#create'
   get '/users/:id' => 'users#show'
   match '/get_in' => 'users#new',  as: :get_in
