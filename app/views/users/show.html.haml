@@ -1,20 +1,25 @@
-%p#notice= notice
+.row_fluid
+  .span12.top_blank
+%table{width: "100%", cellpadding: '2'}
+  %tr
+    - i = 0
+    - @tweets.friends_timeline.first(2).each do |tweet|
+      %td
+        = image_tag tweet['user']['profile_image_url']
+      %td
+        = tweet["text"]
+      - i += 1
+      - if i%2 == 0
+        %tr
 
-%p
-  %b Name:
-  = @user.name
-%p
-  %b Twitter:
-  = @user.twitter_id
-%p
-  %b Crypted password:
-  = @user.crypted_password
-%p
-  %b Email:
-  = @user.email
-
-= link_to 'Edit', edit_user_path(@user), class: 'btn'
-\|
-= link_to 'Back', users_path, class: 'btn'
-.actions
-  = link_to button_tag('Twitter Credentials', class: "btn btn-info"), admin_credentials_path
+.row_fluid
+  .span3
+  .span6
+    .actions
+      = link_to 'Edit Account', edit_user_path(current_user), class: 'btn'
+      - if current_user.tweeter.token?
+        = link_to 'Change Twitter account', @request_token.authorize_url, class: 'btn btn-danger'  
+      - else
+        = link_to 'Authorize Twitter account', @request_token.authorize_url, class: 'btn btn-info'  
+      = link_to 'Edit Twitter Credentials', admin_credentials_path, class: "btn btn-danger" if current_user.is_admin?
+  .span3

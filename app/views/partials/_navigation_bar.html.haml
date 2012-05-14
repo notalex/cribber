@@ -1,0 +1,10 @@
+.navbar.navbar-fixed-top
+  .navbar-inner
+    .container
+      %a.btn.btn-navbar{"data-target" => ".nav-collapse", "data-toggle" => "collapse"}
+        %span.icon-circle-arrow-down.icon-white
+      = link_to 'Cribber', 'javascript:', class: 'brand'
+      .nav-collapse.collapse
+        %ul.nav.nav-pills
+          %li.active
+            -#= link_to 'Enter', 'javascript:'

@@ -1,22 +1,27 @@
-= form_for @user do |f|
-  -if @user.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@user.errors.count, "error")} prohibited this user from being saved:"
-      %ul
-        - @user.errors.full_messages.each do |msg|
-          %li= msg
-
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :twitter_id
-    = f.text_field :twitter_id
-  .field
-    = f.label :crypted_password
-    = f.text_field :crypted_password
-  .field
-    = f.label :email
-    = f.text_field :email
-  .actions
-    = f.submit 'Save'
+.row-fluid
+  .span12.blank_block
+.row-fluid
+  .span2
+  .span10
+    .span2
+    .span6
+      = form_for @user, html: {class: 'well user_form form-vertical'} do |f|
+        .fieldset
+          .row-fluid
+            .span4
+              .control_group
+                = f.label 'Username', class: 'control-label'
+                .controls
+                  = f.text_field :name
+              .error_msg
+                = flash[:name_error]
+              .control_group
+                = f.label :password, class: 'control-label'
+                .controls
+                  = f.password_field :password
+              .error_msg
+                = flash[:notice]
+              .actions
+                = f.submit 'Get In', class: 'btn btn-primary'
+            .span2
+              %i.icon-user

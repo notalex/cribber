@@ -9,4 +9,6 @@
       = javascript_include_tag "application"
       = csrf_meta_tags
   %body
-    = yield
+    = render 'partials/navigation_bar'
+    .container
+      = yield
