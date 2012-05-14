@@ -13,8 +13,8 @@
               = link_to 'Edit Account', edit_user_path(current_user)
             - if current_user.is_admin?
               %li
-                = link_to 'Edit Twitter Credentials', admin_credentials_path, class: "btn btn-danger" 
+                = link_to 'Edit Tweet Credentials', admin_credentials_path, class: "btn btn-danger" 
             - if current_user.tweeter.token? and @request_token
               %li
-                = link_to 'Change Twitter account', @request_token.authorize_url
+                = link_to 'Change Tweet account', @request_token.authorize_url
 
