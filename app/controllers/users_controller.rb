@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_filter :set_request_token, :get_tweets, only: [:show]
-
+  before_filter :get_tweets, only: [:show]
+  before_filter :set_request_token, only: [:show, :edit]
   def show
   end
 

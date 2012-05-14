@@ -5,6 +5,16 @@
         %span.icon-circle-arrow-down.icon-white
       = link_to 'Cribber', 'javascript:', class: 'brand'
       .nav-collapse.collapse
-        %ul.nav.nav-pills
-          %li.active
-            -#= link_to 'Enter', 'javascript:'
+        - if current_user
+          %ul.nav.nav-pills
+            %li.active
+              = link_to 'Tweets', current_user
+            %li
+              = link_to 'Edit Account', edit_user_path(current_user)
+            - if current_user.is_admin?
+              %li
+                = link_to 'Edit Twitter Credentials', admin_credentials_path, class: "btn btn-danger" 
+            - if current_user.tweeter.token? and @request_token
+              %li
+                = link_to 'Change Twitter account', @request_token.authorize_url
+
