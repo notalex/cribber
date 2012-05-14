@@ -33,4 +33,8 @@ private
     )
   end
 
+  def check_admin
+    redirect_to current_user unless current_user.is_admin?
+  end
+
 end

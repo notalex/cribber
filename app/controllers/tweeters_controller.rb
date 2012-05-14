@@ -1,5 +1,6 @@
 class TweetersController < ApplicationController
   before_filter :get_client, only: :authentication
+  before_filter :check_admin, only: [:admin_credentials, :save_admin_credentials]
 
   def admin_credentials
     @tweeter = current_user.tweeter
