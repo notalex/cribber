@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
+  before_filter :check_login
   helper_method :current_user, :admin
 
 private
@@ -35,6 +36,10 @@ private
 
   def check_admin
     redirect_to current_user unless current_user.is_admin?
+  end
+
+  def check_login
+    redirect_to root_path unless current_user
   end
 
 end

@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
+
+  skip_before_filter :check_login, only: [:new, :create]
   before_filter :get_tweets, only: [:show]
   before_filter :set_request_token, only: [:show, :edit]
+
   def show
   end
 

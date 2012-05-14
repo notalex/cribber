@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  skip_before_filter :check_login, only: [:create, :home]
 
   def create
     session[:user_id] = params[:user_id]
