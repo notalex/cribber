@@ -1,13 +1,13 @@
 class TweetersController < ApplicationController
-  before_filter :get_client
+  before_filter :get_client, only: :authentication
 
   def admin_credentials
-    @tweeter = User.first.build_tweeter
+    @tweeter = current_user.tweeter
   end
 
   def save_admin_credentials
-    tweeter = Tweeter.create! params[:tweeter]
-    redirect_to tweeter.user
+    current_user.tweeter.update_attributes! params[:tweeter]
+    redirect_to logout_path
   end
 
   def authentication

@@ -5,18 +5,19 @@
         %span.icon-circle-arrow-down.icon-white
       = link_to 'Cribber', 'javascript:', class: 'brand'
       .nav-collapse.collapse
-        - if current_user
-          %ul.nav.nav-pills
+        %ul.nav.nav-pills
+          - if current_user.try(:is_admin)
             %li.active
+              = link_to 'Admin Tweet Credentials', admin_credentials_path
+          - elsif current_user
+            %li{class: ("active" if params[:action] == 'show')}
               = link_to 'Tweets', current_user
-            %li
+            %li{class: ("active" if ['new', 'edit'].include? params[:action])}
               = link_to 'Edit Account', edit_user_path(current_user)
-            - if current_user.is_admin?
-              %li
-                = link_to 'Edit Tweet Credentials', admin_credentials_path, class: "btn btn-danger" 
             - if current_user.tweeter.token? and @request_token
               %li
                 = link_to 'Change Tweet account', @request_token.authorize_url
+          - if current_user
             %li
               = link_to content_tag(:i, '',class: 'icon-eject icon-white'), logout_path, title: :logout
                 

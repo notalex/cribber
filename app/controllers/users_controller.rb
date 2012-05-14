@@ -26,10 +26,13 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
+    @user.update_attributes! params[:user]
+    redirect_to @user
   end
 
   def destroy
     @user = User.find(params[:id])
     @user.destroy
+    redirect_to logout_path
   end
 end

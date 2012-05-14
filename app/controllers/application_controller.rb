@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
 private
   def current_user
-    return false unless session[:user_id]
+    return nil unless session[:user_id]
     raise ActiveRecord::RecordNotFound unless User.find(session[:user_id])
     @current_user ||= User.find(session[:user_id])
   end
