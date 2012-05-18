@@ -1,6 +1,7 @@
 class TweetersController < ApplicationController
   before_filter :get_client, only: :authentication
   before_filter :check_admin, only: [:admin_credentials, :save_admin_credentials]
+  before_filter :set_request_token, only: [:tweets]
 
   def admin_credentials
     @tweeter = current_user.tweeter
@@ -18,7 +19,16 @@ class TweetersController < ApplicationController
       :oauth_verifier => params[:oauth_verifier]
     )
     current_user.tweeter.update_attributes! token: access_token.token, secret: access_token.secret
-    redirect_to current_user
+    redirect_to tweets_path
+  end
+
+  def tweets
+    @tweets = TwitterOAuth::Client.new(
+      :consumer_key => admin.tweeter.consumer_key,
+      :consumer_secret => admin.tweeter.consumer_secret,
+      :token => current_user.tweeter.token, 
+      :secret => current_user.tweeter.secret
+    )
   end
 
 end

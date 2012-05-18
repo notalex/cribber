@@ -24,18 +24,8 @@ private
     @admin ||= User.find_by_is_admin(true)
   end
 
-  def get_tweets
-    return false unless current_user.tweeter.token?
-    @tweets = TwitterOAuth::Client.new(
-      :consumer_key => admin.tweeter.consumer_key,
-      :consumer_secret => admin.tweeter.consumer_secret,
-      :token => current_user.tweeter.token, 
-      :secret => current_user.tweeter.secret
-    )
-  end
-
   def check_admin
-    redirect_to current_user unless current_user.is_admin?
+    redirect_to tweets_path unless current_user.is_admin?
   end
 
   def check_login

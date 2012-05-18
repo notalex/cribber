@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
     if current_user.is_admin?
       redirect_to admin_credentials_path
     else
-      redirect_to current_user
+      redirect_to tweets_path
     end
   end
 
@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
     if current_user.try(:is_admin?)
       redirect_to admin_credentials_path
     elsif current_user
-      redirect_to current_user
+      redirect_to tweets_path
     else
       redirect_to get_in_path
     end
