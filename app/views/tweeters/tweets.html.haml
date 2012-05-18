@@ -1,7 +1,7 @@
 .top_blank
-.top_blank
-  = link_to 'Images!', 'javascript:', class: 'btn btn-warning', id: 'toggle_images'
-- if @tweets.present?
+- if current_user.tweeter.token?
+  .top_blank
+    = link_to 'Images!', 'javascript:', class: 'btn btn-warning', id: 'toggle_images'
   %table{width: "100%", cellpadding: '2'}
     %tr
       - i = 0
@@ -17,6 +17,6 @@
         - if i%2 == 0
           %tr
 
-- unless current_user.tweeter.token?
-  .actions
-    = link_to 'Authorize Tweet account', @request_token.authorize_url, class: 'btn btn-info'  
+- else
+  .top_blank
+    = link_to 'Authorize Tweet account', @request_token.authorize_url, class: 'btn btn-info fl_right'
