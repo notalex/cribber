@@ -16,7 +16,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    registered_user = User.find(:first, conditions: ["lower(name) = ?", params[:user][:name]])
+    registered_user = User.find(:first, conditions: ["lower(name) = ?", params[:user][:name].downcase])
     if registered_user.nil? and (@user = User.create(params[:user]))
       redirect_to create_session_path(@user.id)
     elsif registered_user.confirm_password?(params[:user][:password])
