@@ -11,7 +11,7 @@
               = link_to 'Admin Tweet Credentials', admin_credentials_path
           - elsif current_user
             %li{class: ("active" if params[:action] == 'tweets')}
-              = link_to 'Tweets', current_user
+              = link_to 'Tweets', tweets_path
             %li{class: ("active" if ['new', 'edit'].include? params[:action])}
               = link_to 'Edit Account', edit_user_path(current_user)
             - if current_user.tweeter.token? and @request_token
