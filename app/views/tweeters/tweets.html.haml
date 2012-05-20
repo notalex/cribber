@@ -1,29 +1,29 @@
 .top_blank
 - if current_user.tweeter.token?
-  .top_blank
-    = link_to 'Images!', 'javascript:', class: 'btn btn-warning', id: 'toggle_images'
-  %table{width: "100%", cellpadding: '2'}
-    %tr
-      - i = 0
-      - @tweets.home_timeline(count: 100).each do |tweet|
-        %td
-          %table.cribber_block{cellpadding: '2'}
-            %tr
-              %td
+  .row-fluid
+    .span12
+      = link_to 'Images!', 'javascript:', class: 'btn btn-warning', id: 'toggle_images'
+  .row-fluid
+    .span12.cribber_block
+      .row-fluid
+        - @tweets.home_timeline(count: 2).each do |tweet|
+          .span6
+            .row-fluid
+              .span1
                 = image_tag tweet['user']['profile_image_url']
-              %td.cribber_text
+              .span11.cribber_text
                 = tweet["text"]
-        - i += 1
-        - if i%2 == 0
-          %tr
 
 - else
   .top_blank
     = link_to 'Authorize Tweet account', @request_token.authorize_url, class: 'btn btn-info fl_right'
 
--#.top_blank
-  = @tweets.friends_timeline.first.keys
+.top_blank
   %hr
-  = @tweets.friends_timeline.first['user'].keys
+  = @tweets.home_timeline[0]['retweet_count']
   %hr
-  = @tweets.home_timeline(count: 50).size
+  = @tweets.home_timeline.first.keys
+  %hr
+  = @tweets.home_timeline.first['user'].keys
+  %hr
+  = @tweets.home_timeline[2]
