@@ -1,6 +1,5 @@
-.top_blank
 - if current_user.tweeter.token?
-  .top_blank
+  .hero-unit
     = link_to 'Images!', 'javascript:', class: 'btn btn-warning', id: 'toggle_images'
   %table{width: "100%", cellpadding: '2'}
     %tr
@@ -18,12 +17,5 @@
           %tr
 
 - else
-  .top_blank
+  .blank_50
     = link_to 'Authorize Tweet account', @request_token.authorize_url, class: 'btn btn-info fl_right'
-
--#.top_blank
-  = @tweets.friends_timeline.first.keys
-  %hr
-  = @tweets.friends_timeline.first['user'].keys
-  %hr
-  = @tweets.home_timeline(count: 50).size
