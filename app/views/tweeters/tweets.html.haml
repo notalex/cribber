@@ -1,21 +1,35 @@
 - if current_user.tweeter.token?
   .hero-unit
     = link_to 'Images!', 'javascript:', class: 'btn btn-warning', id: 'toggle_images'
-  %table{width: "100%", cellpadding: '2'}
-    %tr
-      - i = 0
-      - @tweets.home_timeline(count: 100).each do |tweet|
-        %td
-          %table.cribber_block{cellpadding: '2'}
-            %tr
-              %td
-                = image_tag tweet['user']['profile_image_url']
-              %td.cribber_text
-                = tweet["text"]
-        - i += 1
-        - if i%2 == 0
-          %tr
+  .row-fluid
+    .span12.cribber_block
+      - ( tweets = @tweets.home_timeline(count: 100) ).each_index do |i|
+        - next if i.odd?
+        .row-fluid
+          - tweets[i..(i+1)].each do |tweet|
+            :ruby
+              if tweet['retweeted_status']
+                user = tweet['retweeted_status']['user']
+                retweeter = tweet['user']
+              else
+                user = tweet['user']
+              end
+            .span6
+              .row-fluid
+                .span1
+                  = image_tag user['profile_image_url']
+                .span11.cribber_text
+                  .row-fluid
+                    %b
+                      = user['screen_name']
+                    %span{class: :grey_text}
+                      = user['name']
+                    - if tweet['retweeted_status']
+                      %span{class: :grey_text}
+                        %i{class: 'icon-retweet'}
+                        = retweeter['screen_name']
+                  .row-fluid
+                    = tweet["text"]
 
 - else
-  .blank_50
-    = link_to 'Authorize Tweet account', @request_token.authorize_url, class: 'btn btn-info fl_right'
+  = link_to 'Authorize Tweet account', @request_token.authorize_url, class: 'btn btn-info fl_right'
