@@ -32,4 +32,5 @@
                     = tweet["text"]
 
 - else
-  = link_to 'Authorize Tweet account', @request_token.authorize_url, class: 'btn btn-info fl_right'
+  .hero-unit
+    = link_to 'Authorize Tweet account', @request_token.authorize_url, class: 'btn btn-info fl_right'
