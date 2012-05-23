@@ -3,7 +3,7 @@ module TweetConfig
     if Rails.env.production?
       100
     else
-      5
+      25
     end
   end
 end
