@@ -57,5 +57,8 @@ module Cribber
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    # provide Paperclip with ImageMagick location
+    Paperclip.options[:command_path] = "/usr/bin/convert"
   end
 end

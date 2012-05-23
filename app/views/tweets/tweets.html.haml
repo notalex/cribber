@@ -3,33 +3,26 @@
     = link_to 'Images!', 'javascript:', class: 'btn btn-warning', id: 'toggle_images'
   .row-fluid
     .span12.cribber_block
-      - ( tweets = @tweets.home_timeline(count: 100) ).each_index do |i|
+      - ( tweets = current_user.tweets ).each_index do |i|
         - next if i.odd?
         .row-fluid
           - tweets[i..(i+1)].each do |tweet|
-            :ruby
-              if tweet['retweeted_status']
-                user = tweet['retweeted_status']['user']
-                retweeter = tweet['user']
-              else
-                user = tweet['user']
-              end
             .span6
               .row-fluid
                 .span1
-                  = image_tag user['profile_image_url']
+                  = image_tag tweet.user_img(:tiny)
                 .span11.cribber_text
                   .row-fluid
                     %b
-                      = user['screen_name']
+                      = tweet.user_name
                     %span{class: :grey_text}
-                      = user['name']
-                    - if tweet['retweeted_status']
+                      = tweet.user_screen_name
+                    - if tweet.is_retweeted?
                       %span{class: :grey_text}
                         %i{class: 'icon-retweet'}
-                        = retweeter['screen_name']
+                        = tweet.retweeter_screen_name
                   .row-fluid
-                    = tweet["text"]
+                    = tweet.text
 
 - else
   .hero-unit

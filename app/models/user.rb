@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_one :tweeter, dependent: :destroy
+  has_many :tweets, dependent: :destroy
   attr_accessor :password
 
   validates :name, uniqueness: {case_sensitive: false}, presence: true

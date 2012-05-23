@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120514133604) do
+ActiveRecord::Schema.define(:version => 20120522022009) do
 
   create_table "sessions", :force => true do |t|
     t.string   "session_id", :null => false
@@ -33,6 +33,23 @@ ActiveRecord::Schema.define(:version => 20120514133604) do
     t.datetime "updated_at",      :null => false
     t.string   "token"
     t.string   "secret"
+  end
+
+  create_table "tweets", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "retweet_count"
+    t.string   "user_name"
+    t.string   "user_screen_name"
+    t.string   "retweeter_name"
+    t.string   "retweeter_screen_name"
+    t.string   "text"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+    t.string   "user_img_file_name"
+    t.string   "user_img_content_type"
+    t.integer  "user_img_file_size"
+    t.datetime "user_img_updated_at"
+    t.string   "tweet_id"
   end
 
   create_table "users", :force => true do |t|
