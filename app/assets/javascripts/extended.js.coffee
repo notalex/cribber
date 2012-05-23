@@ -30,6 +30,12 @@ Array::clean = ->
     ar.push a if a
   ar
 
+Array::present = ->
+  if this.length > 0
+    true
+  else
+    false
+
 # check if field has any value in it
 $.extend $.fn,
   blank: ->
