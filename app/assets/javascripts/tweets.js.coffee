@@ -1,3 +1,7 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
+$ ->
+  $(".cribber_block").click ->
+    $(".cribber_block").css('background-color', 'white')
+    $(this).css('background-color', 'lightgreen')
+    url = $(this).find('.cribber_text').text().match(/\bhttp:\/\/t.co\/\w+(\s|$)/)
+    window.open url[0] if url
+
