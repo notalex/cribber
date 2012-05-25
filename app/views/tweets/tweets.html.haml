@@ -10,7 +10,7 @@
             .span6.cribber_block
               .row-fluid
                 .span1
-                  = image_tag tweet.user_img(:tiny)
+                  = image_tag Image.find_by_twitter_id(tweet.twitter_id).tweet_img(:tiny)
                 .span11.cribber_text
                   .row-fluid
                     %b

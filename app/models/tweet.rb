@@ -6,13 +6,14 @@ class Tweet < ActiveRecord::Base
     if tweet['retweeted_status']
       self.user_name = tweet['retweeted_status']['user']['name']
       self.user_screen_name = tweet['retweeted_status']['user']['screen_name']
-      self.user_img = open(tweet['retweeted_status']['user']['profile_image_url'])
+      self.twitter_id = tweet['retweeted_status']['user']['id_str']
       self.retweeter_name = tweet['user']['name']
       self.retweeter_screen_name = tweet['user']['screen_name']
+
     else
       self.user_name = tweet['user']['name']
       self.user_screen_name = tweet['user']['screen_name']
-      self.user_img = open(tweet['user']['profile_image_url'])
+      self.twitter_id = tweet['user']['id_str']
     end
 
     self.tweet_id = tweet['id_str']
