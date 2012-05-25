@@ -15,11 +15,6 @@ private
     @client ||= TwitterOAuth::Client.new(consumer_key: admin.tweeter.consumer_key, consumer_secret: admin.tweeter.consumer_secret)
   end
 
-  def set_request_token
-    @request_token = get_client.request_token(oauth_callback: authentication_url)
-    session[:r_token] = @request_token
-  end
-
   def admin
     @admin ||= User.find_by_is_admin(true)
   end
@@ -30,6 +25,12 @@ private
 
   def check_login
     redirect_to root_path unless current_user
+  end
+
+  def confirm_twitter_credentials
+    unless current_user.tweeter.token?
+      redirect_to twitter_credentials_path
+    end
   end
 
 end

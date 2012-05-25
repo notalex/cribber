@@ -1,29 +1,24 @@
-- if current_user.tweeter.token?
-  .hero-unit
-    = text_area_tag :send_tweet, nil, placeholder: 'publish tweet'
-  .row-fluid
-    .span12
-      - ( tweets = current_user.tweets ).each_index do |i|
-        - next if i.odd?
-        .row-fluid
-          - tweets[i..(i+1)].each do |tweet|
-            .span6.cribber_block
-              .row-fluid
-                .span1
-                  = image_tag Image.find_by_twitter_id(tweet.twitter_id).tweet_img(:tiny)
-                .span11.cribber_text
-                  .row-fluid
-                    %b
-                      = tweet.user_name
+.hero-unit
+  = text_area_tag :send_tweet, nil, placeholder: 'publish tweet'
+.row-fluid
+  .span12
+    - ( tweets = current_user.tweets ).each_index do |i|
+      - next if i.odd?
+      .row-fluid
+        - tweets[i..(i+1)].each do |tweet|
+          .span6.cribber_block
+            .row-fluid
+              .span1
+                = image_tag Image.find_by_twitter_id(tweet.twitter_id).tweet_img(:tiny)
+              .span11.cribber_text
+                .row-fluid
+                  %b
+                    = tweet.user_name
+                  %span{class: :grey_text}
+                    = tweet.user_screen_name
+                  - if tweet.is_retweeted?
                     %span{class: :grey_text}
-                      = tweet.user_screen_name
-                    - if tweet.is_retweeted?
-                      %span{class: :grey_text}
-                        %i{class: 'icon-retweet'}
-                        = tweet.retweeter_screen_name
-                  .row-fluid
-                    = tweet.text
-
-- else
-  .hero-unit
-    = link_to 'Authorize Tweet account', @request_token.authorize_url, class: 'btn btn-info fl_right'
+                      %i{class: 'icon-retweet'}
+                      = tweet.retweeter_screen_name
+                .row-fluid
+                  = tweet.text

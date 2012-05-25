@@ -21,4 +21,9 @@ class TweetersController < ApplicationController
     redirect_to tweets_path
   end
 
+  def twitter_credentials
+    request_token = get_client.request_token(oauth_callback: authentication_url)
+    session[:r_token] = request_token
+    redirect_to request_token.authorize_url
+  end
 end

@@ -14,9 +14,9 @@
               = link_to 'Tweets', tweets_path
             %li{class: ("active" if ['new', 'edit'].include? params[:action])}
               = link_to 'Edit Account', edit_user_path(current_user)
-            - if current_user.tweeter.token? and @request_token
+            - if current_user.tweeter.token?
               %li
-                = link_to 'Change Tweet account', @request_token.authorize_url
+                = link_to 'Change Tweet account', twitter_credentials_path
           - if current_user
             %li
               = link_to content_tag(:i, '',class: 'icon-eject icon-white'), logout_path, title: :logout

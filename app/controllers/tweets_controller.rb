@@ -1,6 +1,7 @@
 class TweetsController < ApplicationController
-  before_filter :set_request_token, only: [:tweets]
   include TweetConfig
+
+  before_filter :confirm_twitter_credentials, only: [:tweets]
 
   def tweets
     tweets = TwitterOAuth::Client.new(

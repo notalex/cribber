@@ -13,5 +13,6 @@ Cribber::Application.routes.draw do
   match '/save_admin_credentials' => 'tweeters#save_admin_credentials',  as: :save_admin_credentials
   match "/tweeters/authentication" => 'tweeters#authentication',                   as: :authentication
   match "/tweets" => 'tweets#tweets',                                 as: :tweets
+  match '/twitter_credentials' => 'tweeters#twitter_credentials',     as: :twitter_credentials
 
 end
