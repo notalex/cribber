@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120525011106) do
+ActiveRecord::Schema.define(:version => 20120530011832) do
 
   create_table "images", :force => true do |t|
     t.string   "twitter_id"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(:version => 20120525011106) do
     t.string   "tweet_img_content_type"
     t.integer  "tweet_img_file_size"
     t.datetime "tweet_img_updated_at"
+    t.string   "screen_name"
   end
 
   create_table "sessions", :force => true do |t|

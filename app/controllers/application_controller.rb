@@ -33,4 +33,13 @@ private
     end
   end
 
+  def get_client
+    @client = TwitterOAuth::Client.new(
+      :consumer_key => admin.tweeter.consumer_key,
+      :consumer_secret => admin.tweeter.consumer_secret,
+      :token => current_user.tweeter.token, 
+      :secret => current_user.tweeter.secret
+    )
+  end
+
 end

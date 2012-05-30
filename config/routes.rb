@@ -14,5 +14,7 @@ Cribber::Application.routes.draw do
   match "/tweeters/authentication" => 'tweeters#authentication',                   as: :authentication
   match "/tweets" => 'tweets#tweets',                                 as: :tweets
   match '/twitter_credentials' => 'tweeters#twitter_credentials',     as: :twitter_credentials
+  match '/destroy_all_tweets' => 'tweets#destroy_all_tweets',         as: :destroy_all_tweets
+  match '/purge_images' => 'images#purge',                  as: :purge_images
 
 end
