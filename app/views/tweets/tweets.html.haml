@@ -9,7 +9,11 @@
           .span6.cribber_block
             .row-fluid
               .span1
-                = image_tag Image.find_by_twitter_id(tweet.twitter_id).tweet_img(:tiny)
+                - image_url = Image.find_by_twitter_id(tweet.twitter_id).tweet_img(:tiny)
+                - if File.readable?(Rails.public_path + image_url.gsub(/\?\d+/, ''))
+                  = image_tag image_url
+                - else
+                  = image_tag 'default_image.png'
               .span11.cribber_text
                 .row-fluid
                   %b
