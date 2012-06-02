@@ -2,7 +2,7 @@
   = text_area_tag :send_tweet, nil, placeholder: 'publish tweet'
 .row-fluid
   .span12
-    - ( tweets = current_user.tweets ).each_index do |i|
+    - ( tweets = current_user.tweets.order("created_at DESC") ).each_index do |i|
       - next if i.odd?
       .row-fluid
         - tweets[i..(i+1)].each do |tweet|
