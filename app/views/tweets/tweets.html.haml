@@ -8,13 +8,13 @@
         - tweets[i..(i+1)].each do |tweet|
           .span6.cribber_block
             .row-fluid
-              .span1
+              .span1.tweet_click
                 - image_url = Image.find_by_twitter_id(tweet.twitter_id).tweet_img(:tiny)
                 - if File.readable?(Rails.public_path + image_url.gsub(/\?\d+/, ''))
                   = image_tag image_url
                 - else
                   = image_tag 'default_image.png'
-              .span11.cribber_text
+              .span11
                 .row-fluid
                   %b
                     = tweet.user_name
@@ -22,7 +22,10 @@
                     = tweet.user_screen_name
                   - if tweet.is_retweeted?
                     %span{class: :grey_text}
-                      %i{class: 'icon-retweet'}
+                      %i{class: 'icon-chevron-left'}
                       = tweet.retweeter_screen_name
-                .row-fluid
-                  = tweet.text
+                  %span.fl_right.tweet_actions
+                    = link_to content_tag(:i, '', class: 'icon-retweet'), retweet_path(tweet.tweet_id), remote: :true, confirm: "Retweet this post?"
+                .row-fluid.tweet_click 
+                  .cribber_text
+                    = tweet.text
