@@ -1,5 +1,7 @@
-.hero-unit
-  = text_area_tag :send_tweet, nil, placeholder: 'publish tweet'
+.hero-unit.hero_panel
+  = form_tag post_tweet_path do
+    = text_area_tag :send_tweet, nil, placeholder: 'publish tweet'
+    = button_tag content_tag(:i, nil, class: 'icon-fire'), class: 'btn-large btn-primary'
 .row-fluid
   .span12
     - ( tweets = current_user.tweets.order("created_at DESC") ).each_index do |i|

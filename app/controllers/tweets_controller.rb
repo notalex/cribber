@@ -2,7 +2,7 @@ class TweetsController < ApplicationController
   include TweetConfig
 
   before_filter :confirm_twitter_credentials, only: [:tweets]
-  before_filter :get_client, only: [:tweets, :retweet]
+  before_filter :get_client, only: [:tweets, :retweet, :post_tweet]
   before_filter :load_tweet, only: [:destroy]
 
   def tweets
@@ -27,6 +27,11 @@ class TweetsController < ApplicationController
 
   def destroy
     
+  end
+
+  def post_tweet
+    @client.update(params[:send_tweet])
+    redirect_to tweets_path
   end
 
 #######
