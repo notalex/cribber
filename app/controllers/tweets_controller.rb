@@ -3,6 +3,7 @@ class TweetsController < ApplicationController
 
   before_filter :confirm_twitter_credentials, only: [:tweets]
   before_filter :get_client, only: [:tweets, :retweet]
+  before_filter :load_tweet, only: [:destroy]
 
   def tweets
     @client.home_timeline(count: TweetConfig.count).each do |timeline|
@@ -22,6 +23,17 @@ class TweetsController < ApplicationController
   def retweet
     @client.retweet(params[:id])
     render nothing: true
+  end
+
+  def destroy
+    
+  end
+
+#######
+private
+
+  def load_tweet
+    @tweet = Tweet.find(params[:id])
   end
 
 end

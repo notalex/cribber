@@ -16,6 +16,7 @@ Cribber::Application.routes.draw do
 
   match "/tweets" => 'tweets#tweets',                                 as: :tweets
   match '/retweet_this/:id' => 'tweets#retweet',                          as: :retweet
+  match '/delete_tweet/:id' => 'tweets#destroy',                           as: :delete_tweet
 
   match '/purge_images' => 'images#purge',                  as: :purge_images
 end
