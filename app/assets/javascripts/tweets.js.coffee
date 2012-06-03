@@ -1,8 +1,11 @@
 $ ->
-  $(".tweet_click").click ->
-    $(".cribber_block").css('background-color', 'white')
-    $(this).parents('.cribber_block').css('background-color', 'lightgreen')
-    urls = $(this).find('.cribber_text').text().match(/[^'"\w](https?:\/\/t.co\/\w+)/g)
+  $(".cribber_block").click ->
+    $(".cribber_block").removeClass('selected_tweet')
+    $(this).addClass('selected_tweet')
+
+  $('.open_links').click ->
+    parent = $(this).parents('.cribber_block')
+    urls = parent.find('.cribber_text').text().match(/[^'"\w](https?:\/\/t.co\/\w+)/g)
     if urls
       for url in urls
         window.open url
