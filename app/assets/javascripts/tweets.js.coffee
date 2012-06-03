@@ -7,3 +7,19 @@ $ ->
       for url in urls
         window.open url
 
+  # hide icon when tweet field is in focus and show count instead
+  $("#send_tweet").focus ->
+    $(this).css('width', '450px')
+    $('#post_tweet i').hide()
+    $('#post_tweet b').show()
+
+  # show icon when tweet field is exited
+  $('#send_tweet').blur ->
+    $('#post_tweet b').hide()
+    $('#post_tweet i').show()
+    $(this).css('width', '250px') if empty( $(this) )
+
+  # increment counter with val length of tweet field
+  $('#send_tweet').keyup ->
+    $('#post_tweet b').html(140 - $(this).val().length)
+
