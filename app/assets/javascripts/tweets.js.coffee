@@ -23,3 +23,8 @@ $ ->
   $('#send_tweet').keyup ->
     $('#post_tweet b').html(140 - $(this).val().length)
 
+  $('.cribber_block').mouseenter ->
+    $(this).find('.tweet_actions').show()
+
+  $('.cribber_block').mouseleave ->
+    $(this).find('.tweet_actions').hide()
