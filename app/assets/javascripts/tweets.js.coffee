@@ -24,7 +24,17 @@ $ ->
 
   # increment counter with val length of tweet field
   $('#send_tweet').keyup ->
-    $('#post_tweet b').html(140 - $(this).val().length)
+    text = $(this).val()
+    text = text.replace /((https?:\/\/|www\.)[^\s]+)/g, "twenty_one_characters"
+    $('#post_tweet b').html(140 - text.length)
+
+  # check and stop tweet post on submit
+  $("#tweet_post").submit ->
+    tweet_length = Number $("#post_tweet b").text()
+    if tweet_length >= 0
+      true
+    else
+      false
 
   $('.cribber_block').mouseenter ->
     $(this).find('.tweet_actions').show()
