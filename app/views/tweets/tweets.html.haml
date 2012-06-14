@@ -27,9 +27,8 @@
                       %i{class: 'icon-chevron-left'}
                       = tweet.retweeter_screen_name
                   %span.fl_right.tweet_actions
+                    = link_to content_tag(:i, '', class: 'icon-trash'), delete_tweet_path(tweet), confirm: "Delete this post?", method: :delete
                     %i{class: 'icon-download-alt open_links', title: 'Open all links'}
-                    - if false
-                      = link_to content_tag(:i, '', class: 'icon-trash'), delete_tweet_path(tweet), remote: :true, confirm: "Delete this post?", method: :delete
                     = link_to content_tag(:i, '', class: 'icon-retweet'), retweet_path(tweet.tweet_id), remote: :true, confirm: "Retweet this post?", title: 'retweet'
                 .row-fluid
                   .cribber_text

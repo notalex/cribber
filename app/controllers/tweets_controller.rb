@@ -2,7 +2,7 @@ class TweetsController < ApplicationController
   include TweetConfig
 
   before_filter :confirm_twitter_credentials, only: [:tweets]
-  before_filter :get_client, only: [:tweets, :retweet, :post_tweet]
+  before_filter :get_client, only: [:tweets, :retweet, :post_tweet, :destroy]
   before_filter :load_tweet, only: [:destroy]
 
   def tweets
@@ -26,7 +26,9 @@ class TweetsController < ApplicationController
   end
 
   def destroy
-    
+    @client.status_destroy(@tweet.tweet_id)
+    @tweet.destroy
+    redirect_to tweets_path
   end
 
   def post_tweet
