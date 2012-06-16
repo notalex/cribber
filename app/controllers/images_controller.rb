@@ -10,6 +10,6 @@ class ImagesController < ApplicationController
         image.destroy
       end
     end
-    redirect_to tweets_path
+    render js: "window.location.reload(true)"
   end
 end

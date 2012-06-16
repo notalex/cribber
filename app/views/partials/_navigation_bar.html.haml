@@ -14,7 +14,7 @@
               = link_to 'logout', logout_path, title: :logout
             %li{class: 'divider'}
             %li
-              = link_to 'purge images', purge_images_path
+              = link_to 'purge images', purge_images_path, remote: true
             %li{class: 'divider'}
             %li
               = link_to 'purge tweets', destroy_all_tweets_path
@@ -31,5 +31,3 @@
             - if current_user.tweeter.token?
               %li
                 = link_to 'Change Tweet account', twitter_credentials_path
-                
-
