@@ -13,7 +13,7 @@ Spork.prefork do
     Capybara::Selenium::Driver.new(app, browser: :chrome)
   end
 
-  Capybara.javascript_driver = :selenium
+  Capybara.javascript_driver = :selenium_chrome
 end
 
 Spork.each_run do

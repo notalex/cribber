@@ -1,0 +1,120 @@
+[0.000][INFO]:      ChromeDriver 20.0.1133.0 /usr/bin/chromedriver
+[0.210][FINE]:      Initializing session with capabilities {
+   "browserName": "chrome",
+   "chrome.detach": true,
+   "chromeOptions": {
+      "detach": true
+   },
+   "cssSelectorsEnabled": true,
+   "javascriptEnabled": true,
+   "nativeEvents": false,
+   "platform": "ANY",
+   "rotatable": false,
+   "takesScreenshot": false,
+   "version": ""
+}
+
+[0.211][INFO]:      Using named testing interface
+[2.369][INFO]:      Connected to Chrome successfully. Version: 16.0.912.75
+[2.426][FINE]:      Command received (/session/575ee5078a7e07e10944a9ce655157de)
+[2.427][FINE]:      Command finished (/session/575ee5078a7e07e10944a9ce655157de) with response {
+   "sessionId": "575ee5078a7e07e10944a9ce655157de",
+   "status": 0,
+   "value": {
+      "acceptSslCerts": false,
+      "applicationCacheEnabled": false,
+      "browserConnectionEnabled": false,
+      "browserName": "chrome",
+      "chrome.chromedriverVersion": "20.0.1133.0",
+      "chrome.nativeEvents": false,
+      "cssSelectorsEnabled": true,
+      "databaseEnabled": false,
+      "handlesAlerts": true,
+      "javascriptEnabled": true,
+      "locationContextEnabled": false,
+      "nativeEvents": true,
+      "platform": "linux",
+      "rotatable": false,
+      "takesScreenshot": true,
+      "version": "16.0.912.75",
+      "webStorageEnabled": true
+   }
+}
+
+[2.431][FINE]:      Command received (/session/575ee5078a7e07e10944a9ce655157de/url) with params {
+   "url": "http://127.0.0.1:54800/"
+}
+
+[2.431][FINER]:     Waiting for all views to stop loading...
+[2.432][FINER]:     Done waiting for all views to stop loading
+[5.729][FINER]:     Waiting for all views to stop loading...
+[5.757][FINER]:     Done waiting for all views to stop loading
+[5.758][FINE]:      Command finished (/session/575ee5078a7e07e10944a9ce655157de/url) with response {
+   "sessionId": "575ee5078a7e07e10944a9ce655157de",
+   "status": 0,
+   "value": {
+
+   }
+}
+
+[6.491][FINE]:      Command received (/session/575ee5078a7e07e10944a9ce655157de/elements) with params {
+   "using": "xpath",
+   "value": "./descendant-or-self::*[contains(normalize-space(.), 'Cribber')]"
+}
+
+[6.491][FINER]:     Waiting for all views to stop loading...
+[6.492][FINER]:     Done waiting for all views to stop loading
+[6.707][FINER]:     Waiting for all views to stop loading...
+[6.712][FINER]:     Done waiting for all views to stop loading
+[6.712][FINE]:      Command finished (/session/575ee5078a7e07e10944a9ce655157de/elements) with response {
+   "sessionId": "575ee5078a7e07e10944a9ce655157de",
+   "status": 0,
+   "value": [ {
+      "ELEMENT": ":wdc:1340068525594"
+   }, {
+      "ELEMENT": ":wdc:1340068525595"
+   }, {
+      "ELEMENT": ":wdc:1340068525596"
+   }, {
+      "ELEMENT": ":wdc:1340068525597"
+   }, {
+      "ELEMENT": ":wdc:1340068525598"
+   }, {
+      "ELEMENT": ":wdc:1340068525599"
+   }, {
+      "ELEMENT": ":wdc:1340068525600"
+   }, {
+      "ELEMENT": ":wdc:1340068525601"
+   } ]
+}
+
+[6.778][FINE]:      Command received (/session/575ee5078a7e07e10944a9ce655157de/cookie)
+[6.778][FINER]:     Waiting for all views to stop loading...
+[6.787][FINER]:     Done waiting for all views to stop loading
+[7.164][FINER]:     Waiting for all views to stop loading...
+[7.165][FINER]:     Done waiting for all views to stop loading
+[7.165][FINE]:      Command finished (/session/575ee5078a7e07e10944a9ce655157de/cookie) with response {
+   "sessionId": "575ee5078a7e07e10944a9ce655157de",
+   "status": 0,
+   "value": {
+
+   }
+}
+
+[7.174][FINE]:      Command received (/session/575ee5078a7e07e10944a9ce655157de/url) with params {
+   "url": "about:blank"
+}
+
+[7.174][FINER]:     Waiting for all views to stop loading...
+[7.179][FINER]:     Done waiting for all views to stop loading
+[8.086][FINER]:     Waiting for all views to stop loading...
+[8.241][FINER]:     Done waiting for all views to stop loading
+[8.242][FINE]:      Command finished (/session/575ee5078a7e07e10944a9ce655157de/url) with response {
+   "sessionId": "575ee5078a7e07e10944a9ce655157de",
+   "status": 0,
+   "value": {
+
+   }
+}
+
+[8.256][FINE]:      Command received (/session/575ee5078a7e07e10944a9ce655157de)
