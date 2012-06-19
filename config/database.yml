@@ -6,7 +6,7 @@ development:
   username: postgres
   password: postgres
 
-test:
+test: &test
   adapter: postgresql
   encoding: unicode
   database: cribber_test
@@ -22,3 +22,6 @@ production:
   username: postgres
   password: postgres
 
+
+cucumber:
+  <<: *test
