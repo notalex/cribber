@@ -32,4 +32,4 @@
                     = link_to content_tag(:i, '', class: 'icon-retweet'), retweet_path(tweet.tweet_id), remote: :true, confirm: "Retweet this post?", title: 'retweet'
                 .row-fluid
                   .cribber_text
-                    = tweet.text
+                    = tweet.text.html_safe
