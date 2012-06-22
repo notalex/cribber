@@ -13,6 +13,7 @@ class TweetsController < ApplicationController
       tweet.store(timeline)
       tweet.save
     end
+    @user_name = @client.info["screen_name"]
   end
 
   def destroy_all_tweets
