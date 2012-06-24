@@ -24,7 +24,7 @@ $ ->
   # increment counter with val length of tweet field
   $('#send_tweet').keyup ->
     text = $(this).val()
-    text = text.replace /((https?:\/\/|www\.)[^\s]+)/g, "twenty_one_characters"
+    text = text.replace /((https?:\/\/|www\.)[^\s]+)/g, "_twenty__characters_"
     $('#post_tweet b').html(140 - text.length)
 
   # check and stop tweet post on submit
@@ -58,7 +58,7 @@ $ ->
           when code_for('enter')
             open_urls_for $("#selection_#{id}")
             false
-        if element.present()
+        if element
           $(".cribber_block").removeClass('selected_tweet')
           element.addClass('selected_tweet')
 
