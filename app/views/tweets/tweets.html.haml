@@ -5,10 +5,10 @@
 .row-fluid
   .span12
     - n = 0
-    - ( tweets = current_user.tweets.order("created_at DESC") ).each_index do |i|
+    - @tweets.each_index do |i|
       - next if i.odd?
       .row-fluid
-        - tweets[i..(i+1)].each do |tweet|
+        - @tweets[i..(i+1)].each do |tweet|
           - n = n + 1
           .span6.cribber_block{id: "selection_#{n}"}
             .row-fluid
@@ -24,7 +24,7 @@
                     = tweet.user_name
                   %span{class: :grey_text}
                     = tweet.user_screen_name
-                  - if tweet.is_retweeted?
+                  - if tweet.retweeter_name.present?
                     %span{class: :grey_text}
                       %i{class: 'icon-chevron-left'}
                       = tweet.retweeter_screen_name

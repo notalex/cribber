@@ -6,13 +6,9 @@ class TweetsController < ApplicationController
   before_filter :load_tweet, only: [:destroy]
 
   def tweets
-    @client.home_timeline(count: TweetConfig.count).each do |timeline|
-      next if Tweet.find_by_tweet_id(timeline['id_str'])
-      Image.save_tweet_images(timeline)
-      tweet = current_user.tweets.new
-      tweet.store(timeline)
-      tweet.save
-    end
+    timelines = @client.home_timeline(count: TweetConfig.count)
+    timelines.each { |timeline| Image.save_tweet_images(timeline) }
+    @tweets = TweetFactory.create_structs(timelines)
     @user_name = @client.info["screen_name"]
   end
 
